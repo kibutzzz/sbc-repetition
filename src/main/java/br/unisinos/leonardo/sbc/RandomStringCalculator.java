@@ -16,21 +16,18 @@ public class RandomStringCalculator {
   }
 
   public String calculator(String input) {
-    return Arrays.stream(input.split(""))
-        .map(toRandomlyFlipped())
-        .collect(Collectors.joining());
+    return Arrays.stream(input.split("")).map(toRandomlyFlipped()).collect(Collectors.joining());
   }
 
   private Function<String, String> toRandomlyFlipped() {
     return number -> {
       final var randomValue = generator.nextDouble(0, 1);
 
-      if(randomValue > randomnessFactor) {
+      if (randomValue > randomnessFactor) {
         return number;
       }
 
-
-      if("0".equals(number)) {
+      if ("0".equals(number)) {
         return "1";
       }
 

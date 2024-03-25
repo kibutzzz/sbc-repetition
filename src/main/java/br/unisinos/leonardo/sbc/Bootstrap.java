@@ -25,13 +25,13 @@ public class Bootstrap {
     final var repeatedData = repetitionFactorCalculator.calculate(binaryInput, repetitionFactor);
     System.out.printf("repeated binary:\t\t\t%s%n", repeatedData);
 
-
     final var randomStringCalculator = new RandomStringCalculator(RANDOMNESS_FACTOR);
     final var randomnessAddedBinary = randomStringCalculator.calculator(repeatedData);
     System.out.printf("after adding randomness:\t%s%n", randomnessAddedBinary);
 
     final var majorityCalculator = new MajorityCalculator();
-    final var errorRemovedBinary = majorityCalculator.calculate(randomnessAddedBinary, repetitionFactor);
+    final var errorRemovedBinary =
+        majorityCalculator.calculate(randomnessAddedBinary, repetitionFactor);
     System.out.printf("unrepeated binary:\t\t\t%s%n", errorRemovedBinary);
 
     final var output = converter.decode(errorRemovedBinary);

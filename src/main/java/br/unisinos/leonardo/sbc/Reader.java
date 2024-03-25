@@ -7,8 +7,9 @@ public class Reader {
   private Scanner scanner;
 
   public Reader() {
-    this.scanner = new Scanner(System.in) ;
+    this.scanner = new Scanner(System.in);
   }
+
   public String readLine() {
 
     return scanner.nextLine();

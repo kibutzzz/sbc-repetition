@@ -33,13 +33,23 @@
                 <version>${spotless-maven-plugin.version}</version>
                 <executions>
                     <execution>
-                        <id>format</id>
                         <goals>
-                            <goal>apply</goal>
+                            <goal>check</goal>
                         </goals>
-                        <phase>validate</phase>
+                        <phase>compile</phase>
                     </execution>
                 </executions>
+                <configuration>
+                    <java>
+                        <googleJavaFormat>
+                            <version>${googleJavaFormat.version}</version>
+                        </googleJavaFormat>
+                        <excludes>
+                            <exclude>**/generated-sources/**</exclude>
+                            <exclude>**/generated-test-sources/**</exclude>
+                        </excludes>
+                    </java>
+                </configuration>
             </plugin>
         </plugins>
     </build>

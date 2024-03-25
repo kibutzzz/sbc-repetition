@@ -1,12 +1,12 @@
 package br.unisinos.leonardo.sbc;
 
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toMap;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Map;
 import java.util.function.Function;
-
-import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.toMap;
 
 public class MajorityCalculator {
 
@@ -18,12 +18,11 @@ public class MajorityCalculator {
 
   private Function<String, String> byMajority() {
     return repeatedCharacters -> {
+      final var mapOfOccurrences =
+          Arrays.stream(repeatedCharacters.split(""))
+              .collect(toMap(Function.identity(), value -> 1, Integer::sum));
 
-      final var mapOfOccurrences = Arrays.stream(repeatedCharacters.split(""))
-          .collect(toMap(Function.identity(), value -> 1, Integer::sum));
-
-      return Collections.max(mapOfOccurrences.entrySet(), Map.Entry.comparingByValue())
-          .getKey();
+      return Collections.max(mapOfOccurrences.entrySet(), Map.Entry.comparingByValue()).getKey();
     };
   }
 }
